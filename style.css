@@ -1,0 +1,94 @@
+/* General body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #1a1a1a;
+    color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Header styling */
+h1 {
+    text-align: center;
+    padding: 20px;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #ff6b6b;
+    transition: color 0.3s ease;
+}
+
+h1:hover {
+    color: #ff4757;
+}
+
+/* Lesson title styling */
+.lesson-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #5352ed;
+    text-shadow: 0 0 5px #5352ed, 0 0 10px #5352ed, 0 0 15px #5352ed, 0 0 20px #5352ed;
+}
+
+/* Lesson content styling */
+.lesson-content {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #a0a0a0;
+}
+
+/* Navigation buttons styling */
+.navigation button {
+    font-size: 1em;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    background-color: transparent;
+    color: #feca57;
+    border: 2px solid #feca57;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navigation button:hover {
+    background-color: #feca57;
+    color: #1a1a1a;
+}
+
+/* Neon effect for Spanish words */
+span[lang="es"] {
+    color: #ff6b6b;
+    text-shadow: 0 0 5px #ff6b6b, 0 0 10px #ff6b6b, 0 0 15px #ff6b6b, 0 0 20px #ff6b6b;
+}
+
+/* Animation for lesson content */
+.lesson-content p {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.lesson-content p.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    .lesson-title {
+        font-size: 1.2em;
+    }
+
+    .lesson-content {
+        font-size: 1em;
+    }
+
+    .navigation button {
+        font-size: 0.9em;
+    }
+}
