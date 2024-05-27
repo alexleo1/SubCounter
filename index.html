@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Spanish</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .lesson { margin-bottom: 20px; }
+        .lesson-title { font-weight: bold; }
+        .lesson-content { margin-left: 20px; }
+        .navigation { text-align: center; margin-top: 20px; }
+        .navigation button { margin: 0 5px; }
+    </style>
+    <script>
+        window.onload = function() {
+            const lessons = document.querySelectorAll('.lesson');
+            const navigation = document.querySelector('.navigation');
+            let currentIndex = 0;
+
+            function showLesson(index) {
+                lessons.forEach((lesson, i) => {
+                    lesson.style.display = i === index ? 'block' : 'none';
+                });
+            }
+
+            function updateNavigation() {
+                navigation.innerHTML = `
+                    <button onclick="prevLesson()">Back</button>
+                    <span>${currentIndex + 1}/${lessons.length}</span>
+                    <button onclick="nextLesson()">Next</button>
+                `;
+            }
+
+            function nextLesson() {
+                if (currentIndex < lessons.length - 1) {
+                    currentIndex++;
+                    showLesson(currentIndex);
+                    updateNavigation();
+                }
+            }
+
+            function prevLesson() {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    showLesson(currentIndex);
+                    updateNavigation();
+                }
+            }
+
+            showLesson(currentIndex);
+            updateNavigation();
+        };
+    </script>
+</head>
+<body>
+    <h1>Learn Spanish</h1>
+    <div class="lesson" id="lesson1">
+        <div class="lesson-title">Lesson 1: Greetings</div>
+        <div class="lesson-content">
+            <p>Hello - <span lang="es">Hola</span></p>
+            <p>Goodbye - <span lang="es">Adiós</span></p>
+            <p>How are you? - <span lang="es">¿Cómo estás?</span></p>
+        </div>
+    </div>
+    <div class="lesson" id="lesson2">
+        <div class="lesson-title">Lesson 2: Numbers</div>
+        <div class="lesson-content">
+            <p>1 - <span lang="es">Uno</span></p>
+            <p>2 - <span lang="es">Dos</span></p>
+            <p>3 - <span lang="es">Tres</span></p>
+            <p>4 - <span lang="es">Cuatro</span></p>
+            <p>5 - <span lang="es">Cinco</span></p>
+            <p>6 - <span lang="es">Seis</span></p>
+            <p>7 - <span lang="es">Siete</span></p>
+            <p>8 - <span lang="es">Ocho</span></p>
+            <p>9 - <span lang="es">Nueve</span></p>
+            <p>10 - <span lang="es">Diez</span></p>
+            <p>11 - <span lang="es">Once</span></p>
+            <p>12 - <span lang="es">Doce</span></p>
+            <p>13 - <span lang="es">Trece</span></p>
+            <p>14 - <span lang="es">Catorce</span></p>
+            <p>15 - <span lang="es">Quince</span></p>
+            <p>16 - <span lang="es">Dieciséis</span></p>
+            <p>17 - <span lang="es">Diecisiete</span></p>
+            <p>18 - <span lang="es">Dieciocho</span></p>
+            <p>19 - <span lang="es">Diecinueve</span></p>
+            <p>20 - <span lang="es">Veinte</span></p>
+        </div>
+    </div>
+    <!-- Add more lessons here -->
+    <div class="lesson" id="lesson3">
+        <div class="lesson-title">Lesson 3: Basic Phrases</div>
+        <div class="lesson-content">
+            <p>Thank you - <span lang="es">Gracias</span></p>
+            <p>Please - <span lang="es">Por favor</span></p>
+            <p>Excuse me - <span lang="es">Perdón</span></p>
+        </div>
+    </div>
+    <div class="lesson" id="lesson4">
+        <div class="lesson-title">Lesson 4: Food</div>
+        <div class="lesson-content">
+            <p>Bread - <span lang="es">Pan</span></p>
+            <p>Water - <span lang="es">Agua</span></p>
+            <p>Meat - <span lang="es">Carne</span></p>
+        </div>
+    </div>
+    <div class="lesson" id="lesson5">
+        <div class="lesson-title">Lesson 5: Family</div>
+        <div class="lesson-content">
+            <p>Mother - <span lang="es">Madre</span></p>
+            <p>Father - <span lang="es">Padre</span></p>
+            <p>Sister - <span lang="es">Hermana</span></p>
+        </div>
+    </div>
+    <div class="lesson" id="lesson6">
+        <div class="lesson-title">Lesson 6: Colors</div>
+        <div class="lesson-content">
+            <p>Red - <span lang="es">Rojo</span></p>
+            <p>Blue - <span lang="es">Azul</span></p>
+            <p>Green - <span lang="es">Verde</span></p>
+        </div>
+    </div>
+    <div class="lesson" id="lesson7">
+        <div class="lesson-title">Lesson 7: Days of the Week</div>
+        <div class="lesson-content">
+            <p>Monday - <span lang="es">Lunes</span></p>
+            <p>Tuesday - <span lang="es">Martes</span></p>
+            <p>Wednesday - <span lang="es">Miércoles</span></p>
+            <p>Thursday - <span lang="es">Jueves</span></p>
+            <p>Friday - <span lang="es">Viernes</span></p>
+            <p>Saturday - <span lang="es">Sábado</span></p>
+            <p>Sunday - <span lang="es">Domingo</span></p>
+        </div>
+    </div>
+    <div class="lesson" id="lesson8">
+        <div class="lesson-title">Lesson 8: Months of the Year</div>
+        <div class="lesson-content">
+            <p>January - <span lang="es">Enero</span></p>
+            <p>February - <span lang="es">Febrero</span></p>
+            <p>March - <span lang="es">Marzo</span></p>
+            <p>April - <span lang="es">Abril</span></p>
+            <p>May - <span lang="es">Mayo</span></p>
+            <p>June - <span lang="es">Junio</span></p>
+            <p>July - <span lang="es">Julio</span></p>
+            <p>August - <span lang="es">Agosto</span></p>
+            <p>September - <span lang="es">Septiembre</span></p>
+            <p>October - <span lang="es">Octubre</span></p>
+            <p>November - <span lang="es">noviembre</span></p>
+            <p>December - <span lang ="es">diciembre</span></p>
+        </div>
+    </div>
+    <div class="lesson" id="lesson9">
+        <div class="lesson-title">Lesson 9: Telling Time</div>
+        <div class="lesson-content">
+            <p>What time is it? - <span lang="es">¿Qué hora es?</span></p>
+            <p>It's one o'clock - <span lang="es">Es la una</span></p>
+            <p>It's two o'clock - <span lang="es">Son las dos</span></p>
+            <p>It's three o'clock - <span lang="es">Son las tres</span></p>
+            <p>It's four o'clock - <span lang="es">Son las cuatro</span></p>
+            <p>It's five o'clock - <span lang="es">Son las cinco</span></p>
+            <p>It's six o'clock - <span lang="es">Son las seis</span></p>
+            <p>It's seven o'clock - <span lang="es">Son las siete</span></p>
+            <p>It's eight o'clock - <span lang="es">Son las ocho</span></p>
+            <p>It's nine o'clock - <span lang="es">Son las nueve</span></p>
+            <p>It's ten o'clock - <span lang="es">Son las diez</span></p>
+            <p>It's eleven o'clock - <span lang="es">Son las once</span></p>
+            <p>It's twelve o'clock - <span lang="es">Son las doce</span></p>
+        </div>
+    </div>
+    <div class="lesson" id="lesson10">
+        <div class="lesson-title">Lesson 10: Weather</div>
+        <div class="lesson-content">
+            <p>Sunny - <span lang="es">Soleado</span></p>
+            <p>Rainy - <span lang="es">Lluvioso</span></p>
+            <p>Cloudy - <span lang="es">Nublado</span></p>
+            <p>Lightning - <span lang="es">Relámpago</span></p>
+            <p>Thunder - <span lang="es">Trueno</span></p>
+            <p>Tornado - <span lang="es">Tornado</span></p>
+            <p>Hurricane - <span lang="es">Huracán</span></p>
+        </div>
+    </div>
+    <div class="navigation"></div>
+</body>
+</html>
