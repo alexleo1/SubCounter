@@ -1,1 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChannelSubscriberTracker</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #007991, #78ffd6);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .channel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 600px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .channel:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .channel h2 {
+            color: #fff;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        .channel p {
+            font-size: 24px;
+            font-weight: 600;
+            color: #fff;
+            margin: 0;
+        }
+        .channel a {
+            display: block;
+            margin-top: 10px;
+            color: #78ffd6;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+        .channel a:hover {
+            color: #007991;
+        }
+        @media (max-width: 600px) {
+            .channel {
+                padding: 15px;
+            }
+        }
+        #downloadButton {
+            background-color: #007991;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #downloadButton:hover {
+            background-color: #78ffd6;
+            color: #007991;
+        }
+    </style>
+</head>
+<body>
+    <h1>Channel Subscriber Tracker</h1>
+    <div class="channel">
+        <h2>Bawmhead ROBLOX “evil”</h2>
+        <p id="subCount1">Loading...</p>
+        <a href="https://www.youtube.com/channel/UCLQljmEMQmfPUwH6ZpV1Rtw" target="_blank">Subscribe</a>
+    </div>
+    <div class="channel">
+        <h2>ShadowRealmBlade</h2>
+        <p id="subCount2">Loading...</p>
+        <a href="https://www.youtube.com/channel/UCVRr7P3pGpvXRCDo2MULRCQ" target="_blank">Subscribe</a>
+    </div>
+    <button id="downloadButton">Download this page</button>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const apiKey = 'AIzaSyBLtNGJWKEAQDnponXmIhX2lkWIj4uRPtA';
+            const channelIds = ['UCLQljmEMQmfPUwH6ZpV1Rtw', 'UCVRr7P3pGpvXRCDo2MULRCQ'];
+            const subCountElements = [document.getElementById('subCount1'), document.getElementById('subCount2')];
 
+            function updateSubCount(index, count) {
+                subCountElements[index].textContent = count;
+                if (count % 100 === 0 && count !== 0) {
+                    alert(`Congratulations! ${channelIds[index]} has reached ${count} subscribers!`);
+                }
+            }
+
+            function fetchSubCount(index) {
+                fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${channelIds[index]}&key=${apiKey}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.items && data.items[0].statistics) {
+                            updateSubCount(index, parseInt(data.items[0].statistics.subscriberCount));
+                        } else {
+                            subCountElements[index].textContent = 'Error fetching data';
+                        }
+                    })
+                    .catch(error => {
+                        subCountElements[index].textContent = 'Error fetching data';
+                    });
+            }
+
+            channelIds.forEach((id, index) => {
+                fetchSubCount(index);
+            });
+
+            document.getElementById('downloadButton').addEventListener('click', function() {
+                var link = document.createElement('a');
+                link.href = 'fileLink.html';
+                link.download = 'ChannelSubscriberTracker';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+        });
+    </script>
+</body>
+</html>
